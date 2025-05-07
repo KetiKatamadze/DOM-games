@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(52, 52, 107);
+
+}
+header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow: hidden; */
+    background-color: white;
+    position: absolute;
+    top: 1%;
+    z-index: 999;
+}
+header nav ul {
+    width: 900px;
+    height: 70px;
+    display: flex; 
+    gap: 50px;
+    list-style: none;
+    overflow: hidden;
+    font-size: 20px;
+    font-weight: bold;
+    /* background-color: red; */
+    justify-content: center;
+    align-items: center;
+
+}
+header nav ul li{
+    transition: transform 0.5s ease; 
+
+}
+
+header nav ul li:hover{
+    transform: scale(1.2);
+    background-color: #f6f6f6;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#cards-container{
+    /* background-color: rgb(52, 52, 107); */
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    padding: 60px;
+}
+
+.card-wrapper{
+    width: 250px;
+    height: 350px;
+    transition: transform 0.3s ease; 
+    position: relative;
+}
+
+.card-wrapper:hover{
+    transform: scale(1.2);
+
+}
+
+.flag{
+    width: 100%;
+    height: 50%;
+    filter: blur(3px);
+
+}
+
+.countryName{
+    font-style: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.text-content{
+    background-color: rgb(33, 33, 70);
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    gap: 10px;
+    filter: blur(3px);
+
+}
+
+.open{
+    width: 100px;
+    height: 50px;
+    background-color: white;
+    border-radius: 20px;
+    color: black;
+    font-size: 18px;
+    position: absolute;
+    top: 50%;
+    /* transform: translateX(50%); */
+    left: 30%;
+    filter: none;
+    border: 2px solid gray;
+    transition: transform 0.3s ease; 
+    
+}
+
+.open:hover{
+    transform: scale(1.2);
+
+}
+
+.modal{
+    display: none;
+    width: 500px;
+    height: 700px;
+    background-color: rgb(33, 33, 70);
+    position: absolute;
+    left: 38%;
+    top: 15%;
+    border: 10px solid rgb(18, 18, 37);
+}
