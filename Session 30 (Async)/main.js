@@ -109,17 +109,6 @@ const cardContent = (countries) => {
   });
 };
 
-async function country() {
-  try {
-    const response = await fetch("https://restcountries.com/v3.1/all");
-    const data = await response.json();
-    allData = data
-    cardContent(allData);
-  } catch (err) {
-    console.log("Error:", err);
-  }
-}
-
 country();
 
 
@@ -158,12 +147,35 @@ europe.addEventListener("click", () => {
   filterCards(filtered)
 })
 
+
+async function country() {
+  try {
+    const response = await fetch("https://restcountries.com/v3.1/all");
+    const data = await response.json();
+    allData = data
+    cardContent(allData);
+  } catch (err) {
+    console.log("Error:", err);
+  }
+}
+
+country()
+
+
 // function country() {
-//   fetch("https://restcountries.com/v3.1/all")
-//     .then(response => response.json())
-//     .then(data => cardContent(data)) 
-//     .catch(err => console.log(err)) 
+//   let promise = new Promise((resolve, reject) => {
+//     fetch("https://restcountries.com/v3.1/all")
+//       .then(response => response.json())
+//       .then(data => resolve(data))
+//       .catch(err => reject(err));
+//   });
+  
+//   promise
+//     .then(data => cardContent(data))
+//     .catch(error => console.error("Error:", error));
 // }
 
 // country()
+
+
 
