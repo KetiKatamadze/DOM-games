@@ -13,19 +13,31 @@ const highScoreData = document.getElementById("highScore");
 const title = document.querySelector("h1");
 const gameContainer = document.querySelector(".game-container");
 const body = document.querySelector("body")
+const message = document.getElementById("message")
 
 highScoreData.textContent = highScore;
 checkBtn.classList.remove("disable");
 
-checkBtn.addEventListener("click", () => {
+function reset(){
+  checkBtn.classList.remove("disable");
+  score = 20;
+  scoreData.textContent = score;
+  message.textContent = "Start Guessing...";
+  message.style.color = "white"
+  numberBox.textContent = "?";
+  userInput.value = "...";
+  userInput.removeAttribute("disabled");
+  secretNumber = Math.floor(Math.random() * 20) + 1;
+  body.style.backgroundColor = bgColor;
+}
+function check(){
   if (userInput.value === "") {
-    title.textContent = "Please select the Number";
+    message.textContent = "Please select the Number";
     return;
   }
-
   const value = Number(userInput.value);
   if (value === secretNumber) {
-    title.textContent = "You win!";
+    message.textContent = "You win!";
     numberBox.textContent = secretNumber;
     numberBox.style.fontSize = "6rem";
     if (score > highScore) {
@@ -35,37 +47,26 @@ checkBtn.addEventListener("click", () => {
     body.style.backgroundColor = winColor;
     checkBtn.classList.add("disable");
     userInput.setAttribute("disabled", "disabled");
+  } else if (score === 0) {
+    message.textContent = "You lost the game";
+    message.style.color = "red"
+    checkBtn.classList.add("disable");
+    userInput.setAttribute("disabled", "disabled");
+  } else if (value < 0 || value > 20) {
+    message.textContent = "Please select the correct Number!!!";
+    message.style.color = "red"
   } else if (value < secretNumber) {
-    title.textContent = "Your number is too low...";
+    message.textContent = "Your number is too low...";
+    message.style.color = "white"
     score--;
     scoreData.textContent = score;
   } else {
-    title.textContent = "Your number is too high...";
+    message.textContent = "Your number is too high...";
+    message.style.color = "white"
     score--;
     scoreData.textContent = score;
   }
 
-  if (score === 0) {
-    title.textContent = "You lost the game";
-    checkBtn.classList.add("disable");
-    userInput.setAttribute("disabled", "disabled");
-
-  }
-
-  if (value < 0 || value > 20) {
-    title.textContent = "Please select the correct Number!!!";
-    title.style.color = "red"
-  }
-});
-
-resetBtn.addEventListener("click", () => {
-  checkBtn.classList.remove("disable");
-  score = 20;
-  scoreData.textContent = score;
-  title.textContent = "Guess My Number!";
-  numberBox.textContent = "?";
-  userInput.value = "...";
-  userInput.removeAttribute("disabled");
-  secretNumber = Math.floor(Math.random() * 20) + 1;
-  body.style.backgroundColor = bgColor;
-});
+}
+checkBtn.addEventListener("click", check);
+resetBtn.addEventListener("click", reset);

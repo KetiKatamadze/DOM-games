@@ -12,7 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 6rem;
+  gap: 3rem;
   color: #eee;
   width: 100%;
   height: auto;
@@ -141,4 +141,4 @@ body {
 }
 .game-container.disable {
   pointer-events: none;
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=main.css.map */
