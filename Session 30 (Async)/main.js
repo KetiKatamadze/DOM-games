@@ -117,35 +117,19 @@ function filterCards(newCountries){
   cardContent(newCountries)
 }
 
+function setupContinentFilter(btn, continentName) {
+  btn.addEventListener("click", () => {
+    const filtered = allData.filter(country => country.continents.includes(continentName));
+    filterCards(filtered);
+  });
+}
 
-asia.addEventListener("click", () => {
-  const filtered = allData.filter(country => country.continents.includes("Asia"))
-  filterCards(filtered)
-})
-
-africa.addEventListener("click", () => {
-  const filtered = allData.filter(country => country.continents.includes("Africa"))
-  filterCards(filtered)
-})
-northAmerica.addEventListener("click", () => {
-  const filtered = allData.filter(country => country.continents.includes("North America"))
-  filterCards(filtered)
-})
-
-southAmerica.addEventListener("click", () => {
-  const filtered = allData.filter(country => country.continents.includes("South America"))
-  filterCards(filtered)
-})
-
-australia.addEventListener("click", () => {
-  const filtered = allData.filter(country => country.continents.includes("Oceania"))
-  filterCards(filtered)
-})
-
-europe.addEventListener("click", () => {
-  const filtered = allData.filter(country => country.continents.includes("Europe"))
-  filterCards(filtered)
-})
+setupContinentFilter(asia, "Asia");
+setupContinentFilter(africa, "Africa");
+setupContinentFilter(northAmerica, "North America");
+setupContinentFilter(southAmerica, "South America");
+setupContinentFilter(australia, "Oceania");
+setupContinentFilter(europe, "Europe");
 
 
 async function country() {
