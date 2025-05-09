@@ -1,22 +1,22 @@
 const cardContainer = document.getElementById("cards-container");
 const modal = document.querySelector(".modal");
 
-const asia = document.getElementById("asia")
-const africa = document.getElementById("africa")
-const australia = document.getElementById("australia")
-const northAmerica = document.getElementById("northAmerica")
-const southAmerica = document.getElementById("southAmerica")
-const europe = document.getElementById("europe")
+const asia = document.getElementById("asia");
+const africa = document.getElementById("africa");
+const australia = document.getElementById("australia");
+const northAmerica = document.getElementById("northAmerica");
+const southAmerica = document.getElementById("southAmerica");
+const europe = document.getElementById("europe");
+const searchInput = document.getElementById("search-bar");
 
-let allData = []
+let allData = [];
 
-
-function closeModal(){
+function closeModal() {
   modal.style.display = "none";
   modal.innerHTML = "";
 }
 
-function createModal(countries){
+function createModal(countries) {
   modal.innerHTML = "";
   modal.style.display = "block";
   const modalFlag = document.createElement("img");
@@ -111,18 +111,33 @@ const cardContent = (countries) => {
 
 country();
 
-
-function filterCards(newCountries){
-  cardContainer.innerHTML = ""
-  cardContent(newCountries)
+function filterCards(newCountries) {
+  cardContainer.innerHTML = "";
+  cardContent(newCountries);
 }
 
 function setupContinentFilter(btn, continentName) {
   btn.addEventListener("click", () => {
-    const filtered = allData.filter(country => country.continents.includes(continentName));
+    const filtered = allData.filter((country) =>
+      country.continents.includes(continentName)
+    );
     filterCards(filtered);
   });
 }
+
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const searchValue = searchInput.value.toLowerCase();
+    const searcCountry = allData.filter((country) =>
+      country.name.common.toLowerCase().includes(searchValue)
+  );
+  const results = searcCountry;
+  cardContainer.innerHTML = "";
+  cardContent(results);
+  searchInput.value = ""
+  searchInput.placeholder = "Search..."
+  }
+});
 
 setupContinentFilter(asia, "Asia");
 setupContinentFilter(africa, "Africa");
@@ -131,20 +146,18 @@ setupContinentFilter(southAmerica, "South America");
 setupContinentFilter(australia, "Oceania");
 setupContinentFilter(europe, "Europe");
 
-
 async function country() {
   try {
     const response = await fetch("https://restcountries.com/v3.1/all");
     const data = await response.json();
-    allData = data
+    allData = data;
     cardContent(allData);
   } catch (err) {
     console.log("Error:", err);
   }
 }
 
-country()
-
+country();
 
 // function country() {
 //   let promise = new Promise((resolve, reject) => {
@@ -153,13 +166,10 @@ country()
 //       .then(data => resolve(data))
 //       .catch(err => reject(err));
 //   });
-  
+
 //   promise
 //     .then(data => cardContent(data))
 //     .catch(error => console.error("Error:", error));
 // }
 
 // country()
-
-
-

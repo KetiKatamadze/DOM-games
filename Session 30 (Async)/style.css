@@ -10,9 +10,11 @@ body{
 header{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: rgb(26, 26, 54);
+    padding: 0 50px;
+
 }
 header nav ul {
     height: 70px;
@@ -37,6 +39,17 @@ header nav ul li:hover{
     padding: 10px;
     border-radius: 20px;
     cursor: pointer;
+}
+#search-bar{
+    width: 200px;
+    height: 35px;
+    border: 1px solid rgb(163, 158, 158);
+    background-color: rgba(201, 200, 200, 0.149);
+    outline: none;
+    border-radius: 20px;
+    padding: 0 15px;
+    color: white;
+    font-size: 1rem;
 }
 #cards-container{
     width: 100%;
