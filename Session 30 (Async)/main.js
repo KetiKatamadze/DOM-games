@@ -8,6 +8,7 @@ const northAmerica = document.getElementById("northAmerica");
 const southAmerica = document.getElementById("southAmerica");
 const europe = document.getElementById("europe");
 const searchInput = document.getElementById("search-bar");
+const mainPage = document.getElementById("all-country")
 
 let allData = [];
 
@@ -109,14 +110,12 @@ const cardContent = (countries) => {
   });
 };
 
-country();
-
 function filterCards(newCountries) {
   cardContainer.innerHTML = "";
   cardContent(newCountries);
 }
 
-function setupContinentFilter(btn, continentName) {
+function continentFilter(btn, continentName) {
   btn.addEventListener("click", () => {
     const filtered = allData.filter((country) =>
       country.continents.includes(continentName)
@@ -124,6 +123,13 @@ function setupContinentFilter(btn, continentName) {
     filterCards(filtered);
   });
 }
+
+continentFilter(asia, "Asia");
+continentFilter(africa, "Africa");
+continentFilter(northAmerica, "North America");
+continentFilter(southAmerica, "South America");
+continentFilter(australia, "Oceania");
+continentFilter(europe, "Europe");
 
 searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
@@ -139,12 +145,10 @@ searchInput.addEventListener("keydown", (e) => {
   }
 });
 
-setupContinentFilter(asia, "Asia");
-setupContinentFilter(africa, "Africa");
-setupContinentFilter(northAmerica, "North America");
-setupContinentFilter(southAmerica, "South America");
-setupContinentFilter(australia, "Oceania");
-setupContinentFilter(europe, "Europe");
+mainPage.addEventListener("click", () => {
+  cardContainer.innerHTML = ""
+  cardContent(allData);
+})
 
 async function country() {
   try {
