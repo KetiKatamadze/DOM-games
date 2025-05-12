@@ -69,9 +69,6 @@ function reset() {
   score2.textContent = "0";
   currentScore1.textContent = "0";
   currentScore2.textContent = "0";
-  if (img) {
-    img.remove();
-  }
   playerOneBoard.style.backgroundColor = "";
   playerTwoBoard.style.backgroundColor = "";
 
@@ -79,6 +76,10 @@ function reset() {
   rollBtn.disabled = false;
   playerOneBoard.classList.add("active");
   playerTwoBoard.classList.remove("active");
+  player = 1;
+  if (img) {
+    img.remove();
+  }
 }
 
 function holdButton() {
@@ -98,6 +99,9 @@ function holdButton() {
 }
 
 function rollDice() {
+  if (img) {
+    img.remove();
+  }
   const image = document.createElement("img");
   image.classList.add("dice");
   const randomNum = Math.floor(Math.random() * 6);

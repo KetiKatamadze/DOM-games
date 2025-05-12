@@ -59,9 +59,9 @@
       color: $score-color;
     }
     .score-table {
-      @include flex-center(column, 2rem, center);
+      @include flex-center(column, 1rem, center);
       background-color: $score-table-color;
-      width: 40%;
+      width: 50%;
       height: 25%;
       border-radius: 2rem;
 
