@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-page {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(199, 77, 97);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.main-page #again-click,
+.main-page #roll-click,
+.main-page #hold-click {
+  padding: 1.5%;
+  border-radius: 1rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.482);
+  position: absolute;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+.main-page #again-click:hover,
+.main-page #roll-click:hover,
+.main-page #hold-click:hover {
+  background-color: rgba(230, 230, 230, 0.482);
+  transform: translate(-50%, -50%) scale(1.1);
+  cursor: pointer;
+}
+.main-page #again-click {
+  top: 10%;
+}
+.main-page #roll-click {
+  bottom: 20%;
+}
+.main-page #hold-click {
+  bottom: 10%;
+}
+.main-page .dice {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.main-page .game-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0rem;
+  width: 50%;
+  height: 80%;
+  position: relative;
+  background-color: rgba(233, 197, 203, 0.79);
+  border-radius: 20px;
+}
+.main-page .game-board .player-one,
+.main-page .game-board .player-two {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0rem;
+  width: 50%;
+  height: 100%;
+}
+.main-page .game-board .player-one {
+  border-radius: 20px 0 0 20px;
+}
+.main-page .game-board .player-two {
+  border-radius: 0 20px 20px 0;
+}
+.main-page .game-board h3 {
+  color: black;
+  font-size: clamp(25px, 2vw, 50px);
+}
+.main-page .game-board .score {
+  font-size: 7rem;
+  color: rgb(158, 81, 94);
+}
+.main-page .game-board .score-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background-color: rgba(218, 61, 100, 0.902);
+  width: 40%;
+  height: 25%;
+  border-radius: 2rem;
+}
+.main-page .game-board .score-table span {
+  color: white;
+  font-size: clamp(18px, 2vw, 40px);
+}
+.main-page .game-board .score-table .current-score {
+  font-size: 4rem;
+}
+@media (max-width: 1300px) {
+  .main-page .game-board {
+    width: 80%;
+  }
+  .main-page #again-click {
+    top: 20%;
+  }
+  .main-page #roll-click {
+    bottom: 30%;
+  }
+  .main-page #hold-click {
+    bottom: 20%;
+  }
+}
+
+.active {
+  background-color: rgb(233, 195, 202);
+}/*# sourceMappingURL=main.css.map */
