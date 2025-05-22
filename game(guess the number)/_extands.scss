@@ -1,0 +1,31 @@
+%number-box {
+  position: relative;
+  display: inline-block;
+  width: 10rem;
+  height: 10rem;
+  background-color: darken($primary-color, 10%);
+  color: $bg-color;
+  font-size: 10rem;
+  padding: 2rem;
+  z-index: 999;
+  line-height: 6rem;
+}
+
+%input-style {
+  background-color: transparent;
+  border: 4px solid $text-color;
+  padding: 2rem;
+  font-size: 1rem;
+  text-align: center;
+  color: $primary-color;
+  outline: none;
+}
+
+%hr-line {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  height: 4px;
+  width: 100%;
+  background-color: $primary-color;
+}
